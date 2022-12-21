@@ -1,0 +1,21 @@
+<section class="login">
+    <form>
+        <label for="login-username">Username
+        </label>
+        <input type="text" id="login-username"/>
+        <label for="login-password">Password
+        </label>
+        <input type="password" id="login-password"/>
+        {{#if login}}
+        <button id="login-submit">Login 🍑</button>
+        {{else}}
+        <button id="login-submit">Sign up! 🍑</button>
+        {{/if}}
+    </form>
+    {{#if login}}
+    <p>Don't have an account? <a href="/signup">Sign up!</a></p>   
+    {{else}}
+    <p>Already have an account? <a href="/login">Login!</a></p>
+    {{/if}}
+</section>
+<script src="/js/script.js"></script>
