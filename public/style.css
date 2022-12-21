@@ -1,0 +1,50 @@
+body {
+    background-image: url(https://neroh.uk/wp-content/plugins/phastpress/phast.php/c2VydmljZT1pbWFnZXMmc3JjPWh0dHBzJTNBJTJGJTJGbmVyb2gudWslMkZ3cC1jb250ZW50JTJGdXBsb2FkcyUyRjIwMjAlMkYxMSUyRkUzRTA3OTVFLTkwN0EtNDlBNC1BRjRBLTExODM3QjM2MkVGMy5wbmcmY2FjaGVNYXJrZXI9MTYzNzM1MjQyMS0xMTkyMDQmdG9rZW49NTZiNTdhOTE2ZjU1OGQwZA.q.png);
+    height: 100vh;
+}
+
+header {
+    background-color: rgb(198, 248, 232);
+    height: 150px;
+}
+
+header a {
+    color: rgb(49, 149, 99);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+header a:hover {
+    text-decoration: none;
+    color: rgb(33, 124, 78);
+    text-shadow: 1.5px 3px 0 rgb(157, 205, 153);
+}
+
+li {
+    list-style-type: none;
+    padding: 0 1rem;
+}
+
+span {
+    color: rgb(49, 149, 99);
+    font-size: 1.5rem;
+    margin: 0 2rem;
+    padding: .5rem 1rem;
+    background-color: rgb(151, 218, 196);
+    box-shadow: 5px 5px rgb(33, 124, 78);
+    width: 30%;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+@media (max-width: 555px) {
+    span {
+        width: auto;
+    }
+}
+
+@media (min-width: 556px){
+    span {
+        width: 50%;
+    }
+}
