@@ -23,10 +23,10 @@ const submit = () => {
         "Content-Type": "application/json",
       },
     }).then((res) => {
-      if (res.ok) {
-        console.log("You are now logged in!");
+      if (!res.ok) {
+        alert("Incorrect username or password!");
       } else {
-        console.log("Something went wrong, we couldn't log you in!");
+        window.location.assign("/");
       }
     });
   } else if (page === 'signup') {
