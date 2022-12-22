@@ -29,8 +29,30 @@ const submit = () => {
         console.log("Something went wrong, we couldn't log you in!");
       }
     });
-  } else if (page === 'singup') {
-    
+  } else if (page === 'signup') {
+    const username = loginUser.value;
+    const pw = loginPw.value;
+
+    loginUser.value = "";
+    loginPw.value = "";
+
+    fetch("/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        username,
+        pw,
+      }),
+
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (res.ok) {
+        console.log("You are signed up!");
+      } else {
+        console.log("Something went wrong, we couldn't sign you up!");
+      }
+    });
   }
 };
 
