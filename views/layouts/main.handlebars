@@ -14,12 +14,16 @@
             <nav class="uk-flex uk-padding-small">
                 <li><a href="/">Home</a></li>
                 <li><a href="/dashboard">Dashboard</a></li>
+                {{#if loggedIn}}
+                <li><a href="" id="logout">Logout</a></li>
+                {{else}}
                 <li><a href="/login">Login</a></li>
-                <li><a href="/logout">Logout</a></li>
+                {{/if}}
             </nav>
             <span class="uk-flex">Animal Crossing Tips! 🍒</span>
         </header>
         {{{body}}}
     </main>
+    <script src="/js/logout.js"></script>
 </body>
 </html>

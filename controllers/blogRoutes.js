@@ -2,7 +2,7 @@ const router = require('express').Router()
 const {User} = require('../models')
 
 router.get('/', (req, res) => {
-    res.render('homepage')
+    res.render('homepage', {loggedIn: req.session.loggedIn, username: req.session.username})
 })
 
 
@@ -23,20 +23,21 @@ router.post('/login', async (req, res) => {
                 username: req.body.username
             }
         })
-
         if(!user){
             res.status(400).json({ message: 'Incorrect email or password. Please try again!' })
             return
         }
-
         const validPassword = await user.validatePassword(req.body.pw)
-        if(validPassword) {
-            console.log("You are successfully logged in!");
-            res.json("You are successfully logged in!");
-        } else if (!validPassword) {
+         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect email or password. Please try again!' })
             return
         }
+        req.session.save(() => {
+            req.session.loggedIn = true;
+            req.session.username = user.username
+            res.status(200).json('Now logged in!')
+        })
+
     } catch (error) {
         
     }
@@ -51,6 +52,16 @@ router.post('/signup', async (req, res) => {
         res.status(200).json(userData)
     } catch (error) {
         res.status(500).json(error)
+    }
+})
+
+router.post('/logout', (req, res) => {
+    if(req.session.loggedIn){
+        req.session.destroy(() => {
+            res.status(204).end()
+        })
+    } else {
+        res.status(404).end();
     }
 })
 
