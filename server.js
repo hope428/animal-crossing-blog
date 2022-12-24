@@ -17,6 +17,9 @@ const sess = {
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: new SequelizeStore({
+      db: sequelize
+    })
   };
   
   app.use(session(sess));
