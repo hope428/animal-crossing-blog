@@ -1,7 +1,11 @@
 {{#if loggedIn}}
 <div class="dashboard">
-    <h1>Welcome {{username}}</h1>
-    <div>Your posts</div>
+    <h1>Welcome, {{username}}!</h1>
+    <div class="posts">Your posts</div>
+   {{#each userPostsData as |post|}}
+    <h1>{{post.title}}</h1>
+    <p>{{post.content}}</p>
+   {{/each}}
 </div>
 
 {{else}}
