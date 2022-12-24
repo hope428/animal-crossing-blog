@@ -1,10 +1,9 @@
 const router = require('express').Router()
-const {User} = require('../models')
+const {User, Post} = require('../models')
 
-router.get('/', (req, res) => {
-    res.render('homepage', {loggedIn: req.session.loggedIn, username: req.session.username})
-})
-
+// router.get('/', (req, res) => {
+//     res.render('homepage', {loggedIn: req.session.loggedIn, username: req.session.username})
+// })
 
 router.get('/login', (req, res) => {
     res.render('login', {login: true})
@@ -12,6 +11,12 @@ router.get('/login', (req, res) => {
 
 router.get('/signup', (req, res) => {
     res.render('login', {login: false})
+})
+
+router.get('/', async (req, res) => {
+    const postsData = await Post.findAll()
+    const posts = postsData.map((post) => post.get({plain: true}))
+    res.render('homepage', {loggedIn: req.session.loggedIn, username: req.session.username, posts: posts})
 })
 
 router.post('/login', async (req, res) => {
@@ -64,5 +69,6 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 })
+
 
 module.exports = router
