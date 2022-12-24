@@ -1,5 +1,15 @@
 {{#if loggedIn}}
-    <h1>Welcome! {{username}}</h1>
+    <h1>Welcome, {{username}}!</h1>
     {{else}}
-    <h1>Please log in!</h1>
+    <h1>Welcome, guest!</h1>
 {{/if}}
+
+<div class="posts">
+    {{#each posts as |post|}}
+    <div class="post">
+        <h1>{{post.title}}</h1>
+        <p>Author: {{post.user_id}}</p>
+        <p>{{post.content}}</p>
+    </div>
+    {{/each}}
+</div>
