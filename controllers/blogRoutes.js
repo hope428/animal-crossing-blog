@@ -36,9 +36,11 @@ router.get("/dashboard", async (req, res) => {
   });
 });
 
-router.post("/login", async (req, res) => {
-  console.log(req.body);
+router.get("/new-post", (req, res) => {
+  res.render('newpost', {loggedIn: req.session.loggedIn, userId: req.session.userId})
+})
 
+router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({
       where: {
@@ -60,10 +62,13 @@ router.post("/login", async (req, res) => {
     }
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.userId = user.id;
       req.session.username = user.username;
       res.status(200).json("Now logged in!");
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 router.post("/signup", async (req, res) => {

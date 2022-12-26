@@ -3,6 +3,7 @@ const loginUser = document.getElementById("login-username");
 const loginPw = document.getElementById("login-password");
 const page = window.location.href.split("/")[3];
 
+
 const submit = () => {
   event.preventDefault();
   if (page === "login") {
@@ -55,5 +56,6 @@ const submit = () => {
     });
   }
 };
+
 
 loginBtn.addEventListener("click", submit);

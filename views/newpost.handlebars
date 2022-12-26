@@ -1,0 +1,18 @@
+{{#if loggedIn}}
+<div class="new-post">
+    <form class="post-form">
+        <label for="new-post-title">Title</label>
+        <input id="new-post-title" type="text" />
+        <label for="new-post-body">Content</label>
+        <textarea id="new-post-body"></textarea>
+        <button id="create-post" data-userid="{{userId}}">Create</button>
+    </form>
+</div>
+
+{{else}}
+    <div class="dashboard">
+        <h1><a href="/login">Login</a> or <a href="/signup">Sign up</a> to create posts!</h1>
+    </div>
+{{/if}}
+
+<script src="/js/newPost.js"></script>
