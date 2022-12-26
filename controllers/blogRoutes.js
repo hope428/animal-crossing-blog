@@ -24,11 +24,11 @@ router.get("/dashboard", async (req, res) => {
     include: [{ model: User, attributes: ["username", "id"] }],
   });
 
-    const userPostsData = userPosts.map((post) => post.user.username === req.session.username ? post.get({plain: true}) : "")
+  const userPostsData = userPosts.map((post) =>
+    post.user.username === req.session.username ? post.get({ plain: true }) : ""
+  );
 
-//   const userPostsData = userPosts.map((post) => post.get({ plain: true }));
-//   console.log(userPostsData[0].user.username);
-console.log(userPostsData);
+  console.log(userPostsData);
   res.render("dashboard", {
     userPostsData,
     loggedIn: req.session.loggedIn,
