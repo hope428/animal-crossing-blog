@@ -40,6 +40,23 @@ router.get("/new-post", (req, res) => {
   res.render('newpost', {loggedIn: req.session.loggedIn, userId: req.session.userId})
 })
 
+router.post("/new-post", async (req, res) => {
+  try {
+    if(!req.body.title || !req.body.content || !req.body.user_id){
+      res.json("Need to have a title, content, and user to post!")
+    } else {
+      const newPost = await Post.create({
+        title: req.body.title,
+        content: req.body.content,
+        user_id: req.body.user_id
+      })
+      res.status(201).json(newPost)
+    }
+  } catch (error) {
+    console.log(error);
+  }
+})
+
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({
