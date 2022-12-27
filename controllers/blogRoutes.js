@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Post } = require("../models");
 
 router.get("/", async (req, res) => {
-  const postsData = await Post.findAll();
+  const postsData = await Post.findAll({include: {model: User}});
   const posts = postsData.map((post) => post.get({ plain: true }));
   res.render("homepage", {
     loggedIn: req.session.loggedIn,
@@ -28,7 +28,6 @@ router.get("/dashboard", async (req, res) => {
     post.user.username === req.session.username ? post.get({ plain: true }) : ""
   );
 
-  console.log(userPostsData);
   res.render("dashboard", {
     userPostsData,
     loggedIn: req.session.loggedIn,

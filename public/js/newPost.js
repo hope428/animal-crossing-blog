@@ -1,10 +1,14 @@
 const postForm = document.querySelector("form")
 const title = document.getElementById("new-post-title")
 const body = document.getElementById("new-post-body")
-const userid = document.querySelector("button").dataset.userId
+const userid = document.querySelector("button").dataset.userid
 
 const submit = () => {
     event.preventDefault()
+
+    console.log(title.value);
+    console.log(body.value);
+    console.log(userid);
    
     fetch("/new-post", {
         method: "POST",

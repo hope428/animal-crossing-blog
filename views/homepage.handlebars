@@ -7,8 +7,8 @@
 <div class="posts">
     {{#each posts as |post|}}
     <div class="post">
-        <h1>{{post.title}}</h1>
-        <p>Author: {{post.user_id}}</p>
+        <a href="/post/{{post.id}}"><h1>{{post.title}}</h1></a>
+        <p>By: {{post.user.username}}</p>
         <p>{{post.content}}</p>
     </div>
     {{/each}}
