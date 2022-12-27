@@ -2,10 +2,12 @@ const postForm = document.querySelector("form")
 const title = document.getElementById("new-post-title")
 const body = document.getElementById("new-post-body")
 const userid = document.querySelector("button").dataset.userid
+const page = window.location.href
 
 const submit = () => {
+    
     event.preventDefault()
-
+    console.log(page);
     console.log(title.value);
     console.log(body.value);
     console.log(userid);

@@ -1,25 +1,35 @@
-const { Post, User } = require('../../models');
+const { Post, User } = require("../../models");
 
-const router = require('express').Router();
+const router = require("express").Router();
 
-router.get('/:id', async(req, res) => {
+router.get("/:id", async (req, res) => {
+  try {
+    const thisPost = await Post.findByPk(req.params.id, {
+      include: { model: User },
+    });
 
-    try {
-        const thisPost = await Post.findByPk(req.params.id, {
-            include: {model: User}
-        })
-
-        if(!thisPost){
-            res.render('404')
-        }
-
-
-        const thisPostData = thisPost.get({plain: true})
-        
-        res.render('post', {post: thisPostData})
-    } catch (error) {
-        console.log(error);
+    if (!thisPost) {
+      res.render("404");
     }
-})
+
+    const thisPostData = thisPost.get({ plain: true });
+
+    res.render("post", { post: thisPostData });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/edit/:id", async (req, res) => {
+  const currentPost = await Post.findByPk(req.params.id, {
+    include: { model: User },
+  });
+  const currentPostData = currentPost.get({ plain: true });
+  res.render("updatepost", {
+    post: currentPostData,
+    loggedIn: req.session.loggedIn,
+    userId: req.session.userId,
+  });
+});
 
 module.exports = router;

@@ -48,3 +48,7 @@ span {
         width: 50%;
     }
 }
+
+button:hover {
+    cursor: pointer;
+}

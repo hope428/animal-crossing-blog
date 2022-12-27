@@ -3,8 +3,7 @@
     <h1>Welcome, {{username}}!</h1>
     <div class="posts">Your posts</div>
    {{#each userPostsData as |post|}}
-    <h1>{{post.title}}</h1>
-    <p>{{post.content}}</p>
+    <a href="/post/edit/{{post.id}}"><h1>{{post.title}}</h1></a>
    {{/each}}
 
    <a href="/new-post"><button>New Post +</button></a>
