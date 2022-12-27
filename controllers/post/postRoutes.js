@@ -32,4 +32,19 @@ router.get("/edit/:id", async (req, res) => {
   });
 });
 
+router.put("/edit/:id", async (req, res) => {
+  const currentPost = await Post.update(
+    {
+      title: req.body.title,
+      content: req.body.content,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  );
+  res.json(currentPost);
+});
+
 module.exports = router;
