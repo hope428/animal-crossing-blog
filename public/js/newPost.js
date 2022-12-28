@@ -7,8 +7,6 @@ const page = window.location.href.split("/");
 const submit = () => {
     event.preventDefault()
   if (page[4] === "edit") {
-    console.log(title.value);
-    console.log(body.value);
     fetch(`${page[5]}`, {
         method: "PUT",
         body: JSON.stringify({
@@ -26,10 +24,6 @@ const submit = () => {
         }
       })
   } else {
-    console.log(title.value);
-    console.log(body.value);
-    console.log(userid);
-
     fetch("/new-post", {
       method: "POST",
       body: JSON.stringify({

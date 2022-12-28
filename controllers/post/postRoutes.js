@@ -1,4 +1,4 @@
-const { Post, User } = require("../../models");
+const { Post, User, Comment } = require("../../models");
 
 const router = require("express").Router();
 
@@ -45,6 +45,15 @@ router.put("/edit/:id", async (req, res) => {
     }
   );
   res.json(currentPost);
+});
+
+router.post("/:id", async (req, res) => {
+  const newComment = await Comment.create({
+    comment: req.body.comment,
+    user_id: req.body.user_id,
+    post_id: req.params.id
+  });
+  res.json(newComment);
 });
 
 module.exports = router;

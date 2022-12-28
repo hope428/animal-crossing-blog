@@ -7,4 +7,14 @@
     <article>
         {{post.content}}
     </article>
+
+    <div class="comment">
+        <form id="comment-form">
+            <label for="comment">Comment</label>
+            <textarea id="comment-body"></textarea>
+            <button id="submit-btn" data-userid="{{post.user.id}}">Submit</button>
+        </form>
+    </div>
 </div>
+
+<script src="/js/comment.js"></script>
