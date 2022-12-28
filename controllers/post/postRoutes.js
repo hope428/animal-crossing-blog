@@ -5,7 +5,14 @@ const router = require("express").Router();
 router.get("/:id", async (req, res) => {
   try {
     const thisPost = await Post.findByPk(req.params.id, {
-      include: { model: User },
+      //include model: user,
+      //include model comments, including user
+      include: [
+        {
+          model: Comment,
+        },
+        { model: User },
+      ],
     });
 
     if (!thisPost) {
@@ -51,7 +58,7 @@ router.post("/:id", async (req, res) => {
   const newComment = await Comment.create({
     comment: req.body.comment,
     user_id: req.body.user_id,
-    post_id: req.params.id
+    post_id: req.params.id,
   });
   res.json(newComment);
 });
