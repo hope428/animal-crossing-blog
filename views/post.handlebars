@@ -21,7 +21,7 @@
             
             <section class="post-body">
                 <p>{{comment.comment}}</p>
-                <p>-Author {{format_date comment.createdAt}}</p>
+                <p>-{{comment.comment_user}} {{format_date comment.createdAt}}</p>
                 <hr/>
             </section>
             {{/each}}
@@ -29,13 +29,15 @@
         
     </section>
 
+    {{#if loggedIn}}
     <div class="container">
         <form id="comment-form">
             <label for="comment">Leave a Comment</label>
             <textarea id="comment-body"></textarea>
-            <button id="submit-btn" data-userid="{{post.user.id}}">Submit</button>
+            <button id="submit-btn" data-userid="{{username}}">Submit</button>
         </form>
     </div>
+    {{/if}}
 </div>
 
 <script src="/js/comment.js"></script>

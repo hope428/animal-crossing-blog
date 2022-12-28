@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Post } = require("../models");
 
 router.get("/", async (req, res) => {
-  const postsData = await Post.findAll({include: {model: User}});
+  const postsData = await Post.findAll({ include: { model: User } });
   const posts = postsData.map((post) => post.get({ plain: true }));
   res.render("homepage", {
     loggedIn: req.session.loggedIn,
@@ -20,43 +20,54 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/dashboard", async (req, res) => {
-  const userPosts = await Post.findAll({
-    where: {
-      user_id: req.session.userId 
-    },
-    include: [{ model: User, attributes: ["username", "id"] }],
-    
-  });
+  if (req.session.userId) {
+    const userPosts = await Post.findAll({
+      where: {
+        user_id: req.session.userId,
+      },
+      include: [{ model: User, attributes: ["username", "id"] }],
+    });
+    if (userPosts) {
+      const userPostsData = userPosts.map((post) => post.get({ plain: true }));
 
-  const userPostsData = userPosts.map((post) => post.get({plain: true}));
+      res.render("dashboard", {
+        userPostsData,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+      });
+      return;
+    } else {
+      res.render("dashboard", { loggedIn: req.session.loggedIn });
+      return;
+    }
+  }
 
-  res.render("dashboard", {
-    userPostsData,
-    loggedIn: req.session.loggedIn,
-    username: req.session.username,
-  });
+  res.render("dashboard", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/new-post", (req, res) => {
-  res.render('newpost', {loggedIn: req.session.loggedIn, userId: req.session.userId})
-})
+  res.render("newpost", {
+    loggedIn: req.session.loggedIn,
+    userId: req.session.userId,
+  });
+});
 
 router.post("/new-post", async (req, res) => {
   try {
-    if(!req.body.title || !req.body.content || !req.body.user_id){
-      res.json("Need to have a title, content, and user to post!")
+    if (!req.body.title || !req.body.content || !req.body.user_id) {
+      res.json("Need to have a title, content, and user to post!");
     } else {
       const newPost = await Post.create({
         title: req.body.title,
         content: req.body.content,
-        user_id: req.body.user_id
-      })
-      res.status(201).json(newPost)
+        user_id: req.body.user_id,
+      });
+      res.status(201).json(newPost);
     }
   } catch (error) {
     console.log(error);
   }
-})
+});
 
 router.post("/login", async (req, res) => {
   try {

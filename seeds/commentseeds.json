@@ -1,17 +1,17 @@
 [
   {
     "comment": "Great post!",
-    "user_id": 2,
+    "comment_user": "KK",
     "post_id": 1
   },
   {
     "comment": "This is really cool!!!!",
-    "user_id": 1,
+    "comment_user": "Villager",
     "post_id": 2
   },
   {
     "comment": "I disagree",
-    "user_id": 3,
+    "comment_user": "Tommy",
     "post_id": 3
   }
 ]

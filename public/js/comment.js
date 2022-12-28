@@ -5,7 +5,6 @@ const postId = window.location.href.split("/")[4];
 
 const addComment = () => {
   event.preventDefault();
-  console.log(postId);
   const commentText = comment.value;
   fetch(`/post/${postId}`, {
     method: "POST",

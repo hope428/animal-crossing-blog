@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
 
     const thisPostData = thisPost.get({ plain: true });
 
-    res.render("post", { post: thisPostData });
+    res.render("post", { post: thisPostData, loggedIn: req.session.loggedIn, username: req.session.username });
   } catch (error) {
     console.log(error);
   }
@@ -57,7 +57,7 @@ router.put("/edit/:id", async (req, res) => {
 router.post("/:id", async (req, res) => {
   const newComment = await Comment.create({
     comment: req.body.comment,
-    user_id: req.body.user_id,
+    comment_user: req.body.user_id,
     post_id: req.params.id,
   });
   res.json(newComment);
