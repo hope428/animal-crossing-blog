@@ -52,3 +52,20 @@ span {
 button:hover {
     cursor: pointer;
 }
+
+.container {
+    margin: 1rem auto 0;
+    border: 3px solid rgb(252, 252, 177);
+    max-width: 90%;
+    text-align: center;
+    background-color: beige;
+    border-radius: 4px;
+}
+
+.container h1, h2 {
+    color: rgb(33, 124, 78);
+}
+
+.fail-img {
+    max-width: 350px;
+}

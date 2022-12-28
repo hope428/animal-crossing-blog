@@ -20,7 +20,6 @@ router.get("/:id", async (req, res) => {
     }
 
     const thisPostData = thisPost.get({ plain: true });
-
     res.render("post", { post: thisPostData });
   } catch (error) {
     console.log(error);
