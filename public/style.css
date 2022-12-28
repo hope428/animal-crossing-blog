@@ -53,19 +53,42 @@ button:hover {
     cursor: pointer;
 }
 
-.container {
+.container, .welcome{
     margin: 1rem auto 0;
-    border: 3px solid rgb(252, 252, 177);
+    border: 3px solid rgb(49, 149, 99);
     max-width: 90%;
     text-align: center;
     background-color: beige;
     border-radius: 4px;
+    padding: 1rem;
 }
 
-.container h1, h2 {
+h1, h2 {
     color: rgb(33, 124, 78);
 }
 
 .fail-img {
     max-width: 350px;
+}
+
+.welcome {
+    text-align: center;
+    padding: 1rem;
+    width: 50%;
+
+}
+
+.container a {
+    font-size: 1.5rem;
+    color: rgb(33, 124, 78);
+}
+
+.post {
+    display: flex;
+    background-color: rgb(187, 242, 242);
+    margin: 1rem;
+    padding: 3px;
+    border-radius: 4px;
+    justify-content: space-between;
+    align-items: baseline;
 }
