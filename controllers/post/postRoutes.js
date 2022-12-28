@@ -63,4 +63,13 @@ router.post("/:id", async (req, res) => {
   res.json(newComment);
 });
 
+router.delete("/delete/:id", async (req, res) => {
+  const deletedPost = await Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  res.json(deletedPost)
+})
+
 module.exports = router;

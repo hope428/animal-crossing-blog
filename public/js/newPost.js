@@ -2,6 +2,7 @@ const postForm = document.querySelector("form");
 const title = document.getElementById("new-post-title");
 const body = document.getElementById("new-post-body");
 const userid = document.querySelector("button").dataset.userid;
+const deleteBtn = document.getElementById("delete-post")
 const page = window.location.href.split("/");
 
 const submit = () => {
@@ -44,4 +45,21 @@ const submit = () => {
   }
 };
 
+const deleteItem = () => {
+  event.preventDefault()
+  fetch(`/post/delete/${page[5]}`, {
+    method: "DELETE", 
+    headers: { "Content-Type": "application/json" }
+  }).then((res) => {
+    if(!res.ok){
+      console.log('something went wrong!');
+    } else {
+      window.location.assign('/dashboard')
+    }
+  })
+}
+
+if(deleteBtn){
+  deleteBtn.addEventListener('click', deleteItem)
+}
 postForm.addEventListener("submit", submit);
