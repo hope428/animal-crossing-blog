@@ -1,6 +1,8 @@
 body {
     background-image: url(https://neroh.uk/wp-content/plugins/phastpress/phast.php/c2VydmljZT1pbWFnZXMmc3JjPWh0dHBzJTNBJTJGJTJGbmVyb2gudWslMkZ3cC1jb250ZW50JTJGdXBsb2FkcyUyRjIwMjAlMkYxMSUyRkUzRTA3OTVFLTkwN0EtNDlBNC1BRjRBLTExODM3QjM2MkVGMy5wbmcmY2FjaGVNYXJrZXI9MTYzNzM1MjQyMS0xMTkyMDQmdG9rZW49NTZiNTdhOTE2ZjU1OGQwZA.q.png);
-    height: 100vh;
+    background-size: cover;
+    background-repeat: repeat;
+    min-height: 100vh;
 }
 
 header {
@@ -25,7 +27,7 @@ li {
     padding: 0 1rem;
 }
 
-span {
+span, button {
     color: rgb(49, 149, 99);
     font-size: 1.5rem;
     margin: 0 2rem;
@@ -60,11 +62,18 @@ button:hover {
     text-align: center;
     background-color: beige;
     border-radius: 4px;
-    padding: 1rem;
 }
 
-h1, h2 {
+h1, h2, h3, p, label {
     color: rgb(33, 124, 78);
+}
+
+label {
+    font-size: 1.5rem;
+}
+
+h3 {
+    padding-top: 1rem;
 }
 
 .fail-img {
@@ -83,12 +92,43 @@ h1, h2 {
     color: rgb(33, 124, 78);
 }
 
-.post {
+.post, .post-header {
     display: flex;
     background-color: rgb(187, 242, 242);
     margin: 1rem;
-    padding: 3px;
     border-radius: 4px;
     justify-content: space-between;
+    padding: 0 1.5rem;
     align-items: baseline;
+}
+
+.post-header {
+    margin: 0;
+}
+
+.post-body {
+    padding: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input, button, textarea {
+    width: 50%;
+    margin: 1rem;
+}
+
+button {
+    border: none;
+}
+
+input {
+    height: 2rem;
+}
+
+.dashboard {
+    padding: 1rem;
 }

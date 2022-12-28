@@ -1,23 +1,37 @@
 <div>
-    <div class="post-header">
-        <h1>{{post.title}}</h1>
-        <p>{{post.user.username}}</p>
-        <p>{{post.updatedAt}}</p>
+    <div class="container">
+        <div class="post-header">
+            <h3>{{post.title}}</h3>
+            <p>Posted by {{post.user.username}}</p>
+            <p>on {{format_date post.updatedAt}} at {{format_time post.updatedAt}}</p>
+        </div>
+        <article class="post-body">
+            <p>{{post.content}}</p>
+        </article>
     </div>   
-    <article>
-        {{post.content}}
-    </article>
+    
 
     <section class="comment-section">
-        {{#each post.comments as |comment|}}
-            <h1>{{comment.comment}}</h1>
+        
+        <div class="container">
+            <div class="post-header">
+                <h3>Comments</h3>
+            </div>
+            {{#each post.comments as |comment|}}
             
-        {{/each}}
+            <section class="post-body">
+                <p>{{comment.comment}}</p>
+                <p>-Author {{format_date comment.createdAt}}</p>
+                <hr/>
+            </section>
+            {{/each}}
+        </div>
+        
     </section>
 
-    <div class="comment">
+    <div class="container">
         <form id="comment-form">
-            <label for="comment">Comment</label>
+            <label for="comment">Leave a Comment</label>
             <textarea id="comment-body"></textarea>
             <button id="submit-btn" data-userid="{{post.user.id}}">Submit</button>
         </form>

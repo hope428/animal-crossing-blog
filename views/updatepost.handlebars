@@ -1,11 +1,11 @@
 {{#if loggedIn}}
-<div class="new-post">
+<div class="new-post container">
     <form class="post-form">
         <label for="new-post-title">Title</label>
         <input value="{{post.title}}" id="new-post-title" type="text" />
         <label for="new-post-body">Content</label>
         <textarea id="new-post-body">{{post.content}}</textarea>
-        <button id="create-post" data-userid="{{userId}}">Create</button>
+        <button id="create-post" data-userid="{{userId}}">Update Post</button>
     </form>
 </div>
 

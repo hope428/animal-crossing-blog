@@ -1,16 +1,17 @@
 {{#if loggedIn}}
-<div class="dashboard">
+<div class="dashboard container">
     <h1>Welcome, {{username}}!</h1>
-    <div class="posts">Your posts</div>
+    <div class="post">
    {{#each userPostsData as |post|}}
-    <a href="/post/edit/{{post.id}}"><h1>{{post.title}}</h1></a>
+    <a href="/post/edit/{{post.id}}"><p>{{post.title}}</h1></p>
    {{/each}}
+   </div>
 
    <a href="/new-post"><button>New Post +</button></a>
 </div>
 
 {{else}}
-    <div class="dashboard">
-        <h1><a href="/login">Login</a> or <a href="/signup">Sign up</a> to create posts!</h1>
+    <div class="dashboard container">
+        <p><a href="/login">Login</a> or <a href="/signup">Sign up</a> to create posts!</p>
     </div>
 {{/if}}
