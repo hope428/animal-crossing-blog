@@ -21,12 +21,14 @@ router.get("/signup", (req, res) => {
 
 router.get("/dashboard", async (req, res) => {
   const userPosts = await Post.findAll({
+    where: {
+      user_id: req.session.userId 
+    },
     include: [{ model: User, attributes: ["username", "id"] }],
+    
   });
 
-  const userPostsData = userPosts.map((post) =>
-    post.user.username === req.session.username ? post.get({ plain: true }) : ""
-  );
+  const userPostsData = userPosts.map((post) => post.get({plain: true}));
 
   res.render("dashboard", {
     userPostsData,

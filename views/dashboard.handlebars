@@ -1,11 +1,15 @@
 {{#if loggedIn}}
 <div class="dashboard container">
     <h1>Welcome, {{username}}!</h1>
-    <div class="post">
+    {{log this}}
+    
    {{#each userPostsData as |post|}}
-    <a href="/post/edit/{{post.id}}"><p>{{post.title}}</h1></p>
+   <div class="post">
+    <a href="/post/edit/{{post.id}}"><p>{{post.title}}</p></a>
+    <p>{{format_date post.createdAt}}</p>
+    </div>
    {{/each}}
-   </div>
+   
 
    <a href="/new-post"><button>New Post +</button></a>
 </div>
