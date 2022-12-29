@@ -4,12 +4,17 @@
     {{else}}
     <h1 class="welcome">Welcome, guest!</h1>
 {{/if}}
-<div class="container">
+<div class="">
 <div class="posts">
     {{#each posts as |post|}}
-    <div class="post">
+    <div class="container">
+        <div class="post-header">
         <a href="/post/{{post.id}}"><p>{{post.title}}</p></a>
         <p>{{format_date post.createdAt}}</p>
+        </div>
+        <div class="post-body">
+            <p>{{post.content}}</p>
+        </div>
     </div>
     {{/each}}
 </div>

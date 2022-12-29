@@ -20,7 +20,7 @@ const addComment = () => {
     if (!res.ok) {
       ("Something went wrong");
     } else {
-      window.location.assign("/");
+      window.location.assign(`/post/${postId}`);
     }
   });
 };
