@@ -6,7 +6,6 @@ router.get("/:id", async (req, res) => {
   try {
     const thisPost = await Post.findByPk(req.params.id, {
       //include model: user,
-      //include model comments, including user
       include: [
         {
           model: Comment,
@@ -21,7 +20,11 @@ router.get("/:id", async (req, res) => {
 
     const thisPostData = thisPost.get({ plain: true });
 
-    res.render("post", { post: thisPostData, loggedIn: req.session.loggedIn, username: req.session.username });
+    res.render("post", {
+      post: thisPostData,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
+    });
   } catch (error) {
     console.log(error);
   }
@@ -66,10 +69,10 @@ router.post("/:id", async (req, res) => {
 router.delete("/delete/:id", async (req, res) => {
   const deletedPost = await Post.destroy({
     where: {
-      id: req.params.id
-    }
-  })
-  res.json(deletedPost)
-})
+      id: req.params.id,
+    },
+  });
+  res.json(deletedPost);
+});
 
 module.exports = router;
