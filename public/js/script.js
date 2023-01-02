@@ -42,7 +42,7 @@ const submit = () => {
       },
     }).then((res) => {
       if (res.ok) {
-        window.location.assign("/login")
+        window.location.assign("/dashboard")
       } else {
         console.log("Something went wrong, we couldn't sign you up!");
       }

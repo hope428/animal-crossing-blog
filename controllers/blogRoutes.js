@@ -102,7 +102,12 @@ router.post("/signup", async (req, res) => {
       username: req.body.username,
       password: req.body.pw,
     });
-    res.status(200).json(userData);
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.userId = userData.id;
+      req.session.username = userData.username;
+      res.status(200).json("Now logged in!");
+    });
   } catch (error) {
     res.status(500).json(error);
   }
