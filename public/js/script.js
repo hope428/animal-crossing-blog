@@ -5,6 +5,7 @@ const page = window.location.href.split("/")[3];
 
 const submit = () => {
   event.preventDefault();
+
   if (page === "login") {
     const username = loginUser.value;
     const pw = loginPw.value;
@@ -40,11 +41,12 @@ const submit = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => {
+    }).then(async (res) => {
       if (res.ok) {
         window.location.assign("/dashboard")
       } else {
-        console.log("Something went wrong, we couldn't sign you up!");
+        const data = await res.json()
+        console.log(data.errors[0].message);
       }
     });
   }
