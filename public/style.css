@@ -115,6 +115,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 input, button, textarea {
@@ -132,4 +133,15 @@ input {
 
 .dashboard {
     padding: 1rem;
+}
+
+.toast {
+    background-color: rgb(187, 242, 242);
+    color: rgb(33, 124, 78);
+    position: absolute;
+    font-weight: bold;
+    left: 2.5rem;
+    padding: 1.5rem;
+    width: 250px;
+    box-shadow: 5px 5px rgb(33, 124, 78);
 }

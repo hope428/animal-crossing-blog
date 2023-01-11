@@ -22,7 +22,7 @@ const submit = () => {
       },
     }).then((res) => {
       if (!res.ok) {
-        alert("Incorrect username or password!");
+        M.toast({html: "Incorrect username or password", classes: "toast"})
       } else {
         window.location.assign("/");
       }
@@ -47,9 +47,16 @@ const submit = () => {
       } else {
         const data = await res.json()
         console.log(data.errors[0].message);
+        if(data.errors[0].message === 'Validation len on password failed'){
+          M.toast({html: "Password must be 8 or more characters", classes: "toast"})
+        } else if (data.errors[0].message === 'username must be unique'){
+          M.toast({html: "Username must be unique", classes: "toast"})
+        }
       }
     });
   }
 };
+
+
 
 loginBtn.addEventListener("click", submit);
